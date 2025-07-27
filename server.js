@@ -4,11 +4,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
+
 const app = express();
+const PORT = process.env.PORT || 3000; // ✅ תואם Render
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('public')); // מאפשר גישה לקבצי HTML
 
 const leadsFile = 'leads.json';
 
@@ -37,5 +39,6 @@ app.get('/admin', (req, res) => {
   res.json(data);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+});
