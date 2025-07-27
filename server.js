@@ -6,11 +6,11 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000; // ✅ תואם Render
+const PORT = process.env.PORT || 3000; // ✅ הכי חשוב ל-Render
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public')); // מאפשר גישה לקבצי HTML
+app.use(express.static('public'));
 
 const leadsFile = 'leads.json';
 
@@ -40,5 +40,5 @@ app.get('/admin', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });
